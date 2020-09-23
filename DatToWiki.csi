@@ -1,0 +1,10 @@
+[History]
+1=#P0#=mb	#P1#=ConvertPociones	#P2#=DatToWiki/ModConversor/ConvertPociones	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200509023626	#P7#=0	#P8#=-1	.
+2=#P0#=mb	#P1#=ConvertArmas	#P2#=DatToWiki/ModConversor/ConvertArmas	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200509023628	#P7#=0	#P8#=58	.
+3=#P0#=mb	#P1#=ConvertEscudos	#P2#=DatToWiki/ModConversor/ConvertEscudos	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200509023152	#P7#=0	#P8#=60	.
+4=#P0#=mb	#P1#=ConvertArmaduras	#P2#=DatToWiki/ModConversor/ConvertArmaduras	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200509022913	#P7#=0	#P8#=8	.
+5=#P0#=mb	#P1#=cmdConvertir_Click	#P2#=DatToWiki/frmmain/cmdConvertir_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200509023637	#P7#=0	#P8#=8	.
+6=#P0#=mb	#P1#=ConvertCascos	#P2#=DatToWiki/ModConversor/ConvertCascos	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200509022712	#P7#=0	#P8#=6	.
+7=#P0#=mb	#P1#=main	#P2#=DatToWiki/ModConversor/main	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200509020203	#P7#=0	#P8#=5	.
+8=#P0#=mb	#P1#=GetVar	#P2#=DatToWiki/ModConversor/GetVar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200509014644	#P7#=0	#P8#=-1	.
+9=#P0#=mb	#P1#=OptDat_Click	#P2#=DatToWiki/frmmain/OptDat_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200509023509	#P7#=0	#P8#=0	.
