@@ -16,9 +16,9 @@ Public HechizosDatDir As String
 
 Sub Main()
     'Rutas
-    ObjDatDir = "D:\Proyectos\WinterAO\Server-WinterAO-Resurrection\Dat\OBJ.dat"
-    NPCDatDir = "D:\Proyectos\WinterAO\Server-WinterAO-Resurrection\Dat\NPCs.dat"
-    HechizosDatDir = "D:\Proyectos\WinterAO\Server-WinterAO-Resurrection\Dat\Hechizos.dat"
+    ObjDatDir = "F:\Proyectos\Proyecto Winter\Server-WinterAO\Dat\OBJ.dat"
+    NPCDatDir = "F:\Proyectos\Proyecto Winter\Server-WinterAO\Dat\NPCs.dat"
+    HechizosDatDir = "F:\Proyectos\Proyecto Winter\Server-WinterAO\Dat\Hechizos.dat"
     
     frmmain.Show
 End Sub
@@ -59,7 +59,7 @@ Public Sub ConvertCascos()
         '¿Es un casco?
         If TipoObjeto = TypeCasco Then
             
-            Resultado = Resultado + "|" & Leer.GetValue("OBJ" & i, "GrhIndex") & ".png || " & Leer.GetValue("OBJ" & i, "Name") & " || " & Val(Leer.GetValue("OBJ" & i, "MinDef")) & " || " & Val(Leer.GetValue("OBJ" & i, "MaxDef"))
+            Resultado = Resultado + "|[[Archivo:" & Leer.GetValue("OBJ" & i, "GrhIndex") & ".png|thumb]] || " & Leer.GetValue("OBJ" & i, "Name") & " || " & Val(Leer.GetValue("OBJ" & i, "MinDef")) & " || " & Val(Leer.GetValue("OBJ" & i, "MaxDef"))
             Resultado = Resultado + " || " & Val(Leer.GetValue("OBJ" & i, "Nivel")) & " || " & Val(Leer.GetValue("OBJ" & i, "Valor")) & "||"
             
              For j = 1 To NUMCLASES
@@ -119,7 +119,7 @@ Public Sub ConvertArmaduras()
         '¿Es una armadura?
         If TipoObjeto = TypeArmadura Then
             
-            Resultado = Resultado + "|" & Leer.GetValue("OBJ" & i, "GrhIndex") & ".png || " & Leer.GetValue("OBJ" & i, "Name") & " || " & Val(Leer.GetValue("OBJ" & i, "MinDef")) & " || " & Val(Leer.GetValue("OBJ" & i, "MaxDef"))
+            Resultado = Resultado + "|[[Archivo:" & Leer.GetValue("OBJ" & i, "GrhIndex") & ".png|thumb]] || " & Leer.GetValue("OBJ" & i, "Name") & " || " & Val(Leer.GetValue("OBJ" & i, "MinDef")) & " || " & Val(Leer.GetValue("OBJ" & i, "MaxDef"))
             Resultado = Resultado + " || " & Val(Leer.GetValue("OBJ" & i, "Nivel")) & " || " & Val(Leer.GetValue("OBJ" & i, "Valor")) & "||"
             
              For j = 1 To NUMCLASES
@@ -179,7 +179,7 @@ Public Sub ConvertEscudos()
         '¿Es un escudo?
         If TipoObjeto = TypeEscudos Then
             
-            Resultado = Resultado + "|" & Leer.GetValue("OBJ" & i, "GrhIndex") & ".png || " & Leer.GetValue("OBJ" & i, "Name") & " || " & Val(Leer.GetValue("OBJ" & i, "MinDef")) & " || " & Val(Leer.GetValue("OBJ" & i, "MaxDef"))
+            Resultado = Resultado + "|[[Archivo:" & Leer.GetValue("OBJ" & i, "GrhIndex") & ".png|thumb]] || " & Leer.GetValue("OBJ" & i, "Name") & " || " & Val(Leer.GetValue("OBJ" & i, "MinDef")) & " || " & Val(Leer.GetValue("OBJ" & i, "MaxDef"))
             Resultado = Resultado + " || " & Val(Leer.GetValue("OBJ" & i, "Nivel")) & " || " & Val(Leer.GetValue("OBJ" & i, "Valor")) & "||"
             
              For j = 1 To NUMCLASES
@@ -239,7 +239,7 @@ Public Sub ConvertArmas()
         '¿Es un arma?
         If TipoObjeto = TypeArmas Then
             
-            Resultado = Resultado + "|" & Leer.GetValue("OBJ" & i, "GrhIndex") & ".png || " & Leer.GetValue("OBJ" & i, "Name") & " || " & Val(Leer.GetValue("OBJ" & i, "MinHit")) & " || " & Val(Leer.GetValue("OBJ" & i, "MaxHit"))
+            Resultado = Resultado + "|[[Archivo:" & Leer.GetValue("OBJ" & i, "GrhIndex") & ".png|thumb]] || " & Leer.GetValue("OBJ" & i, "Name") & " || " & Val(Leer.GetValue("OBJ" & i, "MinHit")) & " || " & Val(Leer.GetValue("OBJ" & i, "MaxHit"))
             Resultado = Resultado + " || " & Val(Leer.GetValue("OBJ" & i, "Nivel")) & " || " & Val(Leer.GetValue("OBJ" & i, "Valor")) & "||"
             
              For j = 1 To NUMCLASES
@@ -248,6 +248,68 @@ Public Sub ConvertArmas()
                     Resultado = Resultado & Clase & ", "
                 End If
             Next j
+            
+            Resultado = Resultado & vbCrLf & "|-" & vbCrLf
+            
+        End If
+        
+    Next i
+    
+    Resultado = Resultado + "|}"
+    
+    frmmain.txtTxtResultado.Text = Resultado
+    
+    Set Leer = Nothing
+    
+End Sub
+
+Public Sub ConvertHechizos()
+'***********************************************
+'Autor: Lorwik
+'Fecha: 13/08/2022
+'Descripcion: Lee los Hechizos de Obj.dat y los pasa a una tabla de Wiki
+'***********************************************
+End Sub
+
+Public Sub ConvertNPCHostiles()
+'***********************************************
+'Autor: Lorwik
+'Fecha: 13/08/2022
+'Descripcion: Lee los Hechizos de Obj.dat y los pasa a una tabla de Wiki
+'***********************************************
+
+    Dim TotalNPC As Long
+    Dim i As Long
+    Dim j As Byte
+    Dim TipoNPC As Integer
+    Dim Clase As String
+    Dim Resultado As String
+    
+    Dim Leer As New clsIniManager
+    
+    'Limpiamos el txt
+    frmmain.txtTxtResultado.Text = ""
+
+    Call Leer.Initialize(NPCDatDir)
+    
+    TotalNPC = Val(Leer.GetValue("INIT", "NumNPCs"))
+    
+    'Preparamos la cabecera de la tabla
+    Resultado = "{| class='wikitable'" & vbCrLf
+    Resultado = Resultado + "|-" & vbCrLf
+    Resultado = Resultado + "!Imagen !! Nombre !! Vida !! Exp !! Oro !! Drop !! Daño !! Defensa !! Evasión !! Nivel" & vbCrLf
+    Resultado = Resultado + "|-" & vbCrLf
+    
+    'Reccoremos todos los objetos en busca de cascos
+    For i = 1 To TotalNPC
+        
+        TipoNPC = Val(Leer.GetValue("NPC" & i, "Hostile"))
+        
+        '¿Es hostil?
+        If TipoNPC = 1 Then
+            
+            Resultado = Resultado + "|[[Archivo:" & i & ".png|thumb]] || " & Leer.GetValue("NPC" & i, "Name") & " || " & Val(Leer.GetValue("NPC" & i, "MinHP")) & " / " & Val(Leer.GetValue("NPC" & i, "MaxHP")) & " || " & Val(Leer.GetValue("NPC" & i, "GiveEXP"))
+            Resultado = Resultado + " || " & Val(Leer.GetValue("NPC" & i, "GiveGLD")) & " || " & Val(Leer.GetValue("NPC" & i, "MaxHIT")) & " / " & Val(Leer.GetValue("NPC" & i, "MinHIT")) & "||" & Val(Leer.GetValue("NPC" & i, "PoderEvasion")) & "||" & Val(Leer.GetValue("NPC" & i, "ELV")) & "||"
             
             Resultado = Resultado & vbCrLf & "|-" & vbCrLf
             

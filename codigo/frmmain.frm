@@ -30,6 +30,24 @@ Begin VB.Form frmmain
       Top             =   5280
       Width           =   10935
       Begin VB.OptionButton OptDat 
+         Caption         =   "NPC's Hostiles"
+         Height          =   195
+         Index           =   5
+         Left            =   5040
+         TabIndex        =   8
+         Top             =   360
+         Width           =   1335
+      End
+      Begin VB.OptionButton OptDat 
+         Caption         =   "Hechizos"
+         Height          =   195
+         Index           =   4
+         Left            =   4050
+         TabIndex        =   7
+         Top             =   360
+         Width           =   1095
+      End
+      Begin VB.OptionButton OptDat 
          Caption         =   "Armas"
          Height          =   195
          Index           =   3
@@ -102,9 +120,10 @@ Private Sub cmdConvertir_Click()
         Call ConvertEscudos
     ElseIf OptDat(3).value = True Then
         Call ConvertArmas
+    ElseIf OptDat(4).value = True Then
+        Call ConvertHechizos
+    ElseIf OptDat(5).value = True Then
+        Call ConvertNPCHostiles
     End If
 End Sub
 
-Private Sub Form_Load()
-
-End Sub
